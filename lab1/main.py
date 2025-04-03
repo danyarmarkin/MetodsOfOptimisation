@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-from gradient import gradient_descent, gradient_descent_with_gss
+from gradient import gradient_descent_with_lr, gradient_descent_with_gss, gradient_descent_with_ts
 from calculus import *
 import learning_rate
 
@@ -31,7 +31,7 @@ xx = []
 yy = []
 for case in cases:
     print("start", case[1])
-    coords = list(gradient_descent_with_gss(tf(f), 2, case[0], eps=0.0001, x=(-0, -2)))
+    coords = list(gradient_descent_with_ts(tf(f), 2, lr=case[0], eps=0.0001, x=(-0, -2)))
     x_points = list(map(FIRST, coords))
     y_points = list(map(SECOND, coords))
 
