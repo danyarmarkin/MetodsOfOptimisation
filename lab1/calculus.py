@@ -37,6 +37,10 @@ def grad(f, x: tuple, delta=1e-10, der=symmetric) -> tuple:
         d = list(0 for _ in range(len(x)))
         d[i] = delta
         r.append(der(f, x, tuple(d)))
+    try:
+        f.grad()
+    except AttributeError:
+        pass
     return tuple(r)
 
 
