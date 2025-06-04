@@ -13,7 +13,7 @@
 
 - [Условие](lab3/docs/statement.pdf)
 - [Отчет](lab3/docs/report.md)
-- [Jupiter](lab3/main.ipynb)
+- [Jupyter](lab3/main.ipynb)
 
 
 ## Лабораторная 4
