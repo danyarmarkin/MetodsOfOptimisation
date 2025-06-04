@@ -6,3 +6,19 @@
 
 - [Условие](lab1/docs/statement.pdf)
 - [Отчет](lab1/docs/report.md)
+
+## Лабораторная 3
+**Тема: Метод стохастического
+градиентного спуска (SGD) и его модификации**
+
+- [Условие](lab3/docs/statement.pdf)
+- [Отчет](lab3/docs/report.md)
+- [Jupiter](lab3/main.ipynb)
+
+
+## Лабораторная 4
+**Тема: Методы стохастической
+оптимизации**
+
+- [Условие](lab4/docs/statement.pdf)
+- [Отчет](lab4/docs/report.md)
