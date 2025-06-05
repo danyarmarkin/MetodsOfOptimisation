@@ -1,3 +1,5 @@
+from lab3.main import SGDRegressor
+
 # Отчет по лабораторной работе #3
 
 ## SGD Regression
@@ -62,3 +64,75 @@ def generate_data(n_samples=1000, n_features=1, degree=1, noise=0.1):
 - `n_samples=1000` - количество строк
 - `n_features=1` - количество столбцов
 - `noise=0.1` - шум
+
+## torch.optim
+
+График зависимости MSE от выбранного метода
+![](../imgs/optimizers.png)
+
+```python
+# Список оптимизаторов
+optimizers = {
+    'SGD': (torch.optim.SGD, {'lr': 0.1}),
+    'SGD+Momentum': (torch.optim.SGD, {'lr': 0.01, 'momentum': 0.9}),
+    'SGD+Nesterov': (torch.optim.SGD, {'lr': 0.01, 'momentum': 0.9, 'nesterov': True}),
+    'AdaGrad': (torch.optim.Adagrad, {'lr': 2}),
+    'RMSProp': (torch.optim.RMSprop, {'lr': 1}),
+    'Adam': (torch.optim.Adam, {'lr': 1}),
+}
+```
+
+## SGD Momentum
+
+```python
+class SGDMomentumRegressor:
+    def __init__(self, lr=0.01, epochs=100, batch_size=32, momentum=0.9):
+        ...
+```
+
+Можно сказать, что 
+
+```python
+SGDMomentumRegressor(momentum=0) == SGDRegressor
+```
+
+Сравнение методов
+```python
+SGD             = SGDMomentumRegressor(momentum=0)
+SGD + Momentum  = SGDMomentumRegressor(momentum=0.9)
+```
+
+![](../imgs/sgd_momentum.png)
+
+
+## Gradient boosting
+
+### Метод
+`sklearn.ensemble.GradientBoostingRegressor`
+
+### Параметры
+`n_estimators` - количество базовых моделей.
+
+`max_depth` - максимальная глубина каждого дерева в ансамбле.
+
+### Запуск
+```python
+X, y = make_regression(
+    n_samples=1000,
+    n_features=20,
+    noise=10.0,
+    random_state=42)
+X_train, X_test, y_train, y_test = train_test_split(
+    X,
+    y,
+    test_size=0.2,
+    random_state=42)
+
+model = GradientBoostingRegressor(
+    n_estimators=300,
+    learning_rate=0.3,
+    max_depth=3)
+```
+
+![](../imgs/boost_mse.png)
+![](../imgs/boost_features.png)
